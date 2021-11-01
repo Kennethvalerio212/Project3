@@ -1,7 +1,8 @@
-from django.urls import path
-from . import views
+from django.contrib import admin
+from django.urls import path,include
 
 urlpatterns = [
-    path('',views.home,name='Map-home'),
-    path('about/',views.about,name='Map-about'),
+    path('admin/', admin.site.urls),
+    path('', include('Map.urls')),
+
 ]
