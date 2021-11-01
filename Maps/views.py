@@ -36,8 +36,8 @@ def home(request):
             "Trip_Duration":Trip_Duration,
             "Fuel": Fuel
         }
-        return render(request, 'maps/home.html',data)
+        return render(request, 'Maps/home.html',data)
 
 
 def about(request):
-    return render(request, 'maps/about.html', {'title': 'About'})
+    return render(request, 'Maps/about.html', {'title': 'About'})
