@@ -1,0 +1,25 @@
+{% extends "Maps/base.html" %}
+
+{%block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="inputlocation" class="form-label">Original Location</label>
+      <input type="text" class="form-control" name="inputlocation" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Destination</label>
+      <input type="text" class="form-control" name="inputDestination">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <h4>Directions from {{InputOrig}} to {{InputDest}}</h4>
+  <p> The location {{InputDest}} is {{KM}} Kilometers away</p>
+  <p> The Trip Duration is {{Trip_Duration}}</p>
+  <p> Your fuel consumption will be {{Fuel}} Liters</p>
+
+
+        
+    
+{% endblock content%}
+  
