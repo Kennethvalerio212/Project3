@@ -17,25 +17,27 @@ def home(request):
 
     if json_status == 0:
         print("API Status: " + str(json_status) + " = A successful route call.\n")
-
-       # print("Directions from " + (orig) + " to " + (dest))
-       # print("Trip Duration: " + (json_data["route"]["formattedTime"]))
-       # print("Miles: " + str(json_data["route"]["distance"]))
-       # print("Fuel Used (Gal): " + str(json_data["route"]["fuelUsed"]))
-        #Time
+        directions=[]
         Trip_Duration=json_data["route"]["formattedTime"] 
         #Distance in KM
         KM=str("{:.2f}".format((json_data["route"]["distance"])*1.61))
         #Fuel in Liters
         Fuel=str("{:.2f}".format((json_data["route"]["fuelUsed"])*3.78))
+        Manuever=json_data["route"]["legs"][0]["maneuvers"]
+        if (InputDest and InputOrig is not None):
+            for each in Manuever:
+                directions.append(each["narrative"]+ " (" + str("{:.2f}".format((each["distance"])*1.61) + " km)"))
+        
         
         data={
             "InputOrig":InputOrig,
             "InputDest":InputDest,
             "KM":KM,
             "Trip_Duration":Trip_Duration,
-            "Fuel": Fuel
+            "Fuel": Fuel,
+            "directions":directions
         }
+    
         return render(request, 'Maps/home.html',data)
 
 

@@ -6,12 +6,24 @@
     <div class="mb-3">
       <label for="inputlocation" class="form-label">Original Location</label>
       <input type="text" class="form-control" name="inputlocation" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Destination</label>
+      <label for="inputDestination" class="form-label">Destination</label>
       <input type="text" class="form-control" name="inputDestination">
     </div>
+
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+      <label class="custom-control-label" for="customRadio1">Kilometer/Liters</label>
+    </div>
+
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+      <label class="custom-control-label" for="customRadio2">Miles/Gallon</label>
+    </div>
+
+    <p></p>
+    
     <button type="submit" class="btn btn-primary">Submit</button>
+    <input class="btn btn-primary" type="reset" value="Reset">
   </form>
   {% if InputOrig %}
   <h4>Directions from {{InputOrig}} to {{InputDest}}</h4>
@@ -22,7 +34,21 @@
   <h4></h4>
   <p></p>
   {% endif %}
+  {% if directions %}
+    {% for each in directions %}
+      <p>{{each}}</p>
+  
+    {% endfor %}
+  
+  {% else %}
+    <p></p>
+  
+  {% endif %}
+  
+  
 
+
+    
 
         
     
