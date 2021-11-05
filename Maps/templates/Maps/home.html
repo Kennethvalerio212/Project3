@@ -1,12 +1,13 @@
 {% extends "Maps/base.html" %}
 
 {%block content %}
+
 <form method="post">
     {% csrf_token %}
     <div class="mb-3">
-      <label for="inputlocation" class="form-label">Original Location</label>
+      <label for="inputlocation" class="form-label">Original Location:</label>
       <input type="text" class="form-control" name="inputlocation" aria-describedby="emailHelp">
-      <label for="inputDestination" class="form-label">Destination</label>
+      <label for="inputDestination" class="form-label">Destination:</label>
       <input type="text" class="form-control" name="inputDestination">
     </div>
 
@@ -16,36 +17,49 @@
     </div>
 
     <div class="custom-control custom-radio">
-      <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+      <input type="rsadio" id="customRadio2" name="customRadio" class="custom-control-input">
       <label class="custom-control-label" for="customRadio2">Miles/Gallon</label>
     </div>
 
     <p></p>
     
     <button type="submit" class="btn btn-primary">Submit</button>
-    <input class="btn btn-primary" type="reset" value="cancel" onclick="return cancel()">
+    <button type="reset" class="btn btn-primary" onclick="resetEffort()">Reset</button>
+  
   </form>
+
+<div class="left">
   {% if InputOrig %}
-  <h4>Directions from {{InputOrig}} to {{InputDest}}</h4>
-  <p> The location {{InputDest}} is {{KM}} Kilometers away</p>
-  <p> The Trip Duration is {{Trip_Duration}}</p>
-  <p> Your fuel consumption will be {{Fuel}} Liters</p>
+  <h3>Information: </h3>
+  <h5>From: {{InputOrig}} </h5>
+  <h5>To: {{InputDest}}</h5>
+  <h3>Driving Distance:</h3>
+  <h5> The location {{InputDest}} is {{KM}} away</h5>
+  <h3>Time Duration:</h3>
+  <h5>The Trip Duration is {{Trip_Duration}}</h5>
+  <h3>Fuel Consumption:</h3>
+  <h5> Your fuel consumption will be {{Fuel}} </h5>
   {%else%}
-  <h4></h4>
-  <p></p>
+  
+</div>
+
   {% endif %}
+
+  <div class="right">
   {% if directions %}
+  <h4>Directions:</h4>
     {% for each in directions %}
+  
       <p>{{each}}</p>
-  
+ 
     {% endfor %}
-  
+   
+</div>
   {% else %}
+
     <p></p>
   
   {% endif %}
-
-  
   
   
 
