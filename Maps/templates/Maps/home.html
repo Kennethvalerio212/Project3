@@ -23,7 +23,7 @@
     <p></p>
     
     <button type="submit" class="btn btn-primary">Submit</button>
-    <input class="btn btn-primary" type="reset" value="Reset">
+    <input class="btn btn-primary" type="reset" value="cancel" onclick="return cancel()">
   </form>
   {% if InputOrig %}
   <h4>Directions from {{InputOrig}} to {{InputDest}}</h4>
@@ -44,6 +44,8 @@
     <p></p>
   
   {% endif %}
+
+  
   
   
 
